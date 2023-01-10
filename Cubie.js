@@ -1,7 +1,7 @@
 class Cubie{
     constructor(i, j, k, x, y, z, sideLength) {
-        this.r = sideLength / 2
-        this.rr = this.r *0.9
+        this.halfLength = sideLength / 2
+        this.halfLengthDrawing = this.halfLength *0.9
         this.posInSpace = [i, j, k]
         this.initialPos = createVector(x, y, z)
         this.pos = createVector(x, y, z)
@@ -9,49 +9,51 @@ class Cubie{
         this.quads = []
         this.fillQuads()
     }
-
+    //Only create colored necessary for a given Cubie, faces are stored in this.quads, this should reduce load on CPU when this.show() is called
+    //halflength defines the real size of each Cubie while halfLengthDrawing define a smaller portion than halfLength, allowing empty area around the shapes
+    // (allows to see what is behind)
     fillQuads() {
         if(this.posInSpace[0] == 0) {
             this.quads.push(["orange",
-                            [-this.r, -this.rr, -this.rr],
-                            [-this.r,  this.rr, -this.rr],
-                            [-this.r,  this.rr,  this.rr],
-                            [-this.r, -this.rr,  this.rr]])
+                            [-this.halfLength, -this.halfLengthDrawing, -this.halfLengthDrawing],
+                            [-this.halfLength,  this.halfLengthDrawing, -this.halfLengthDrawing],
+                            [-this.halfLength,  this.halfLengthDrawing,  this.halfLengthDrawing],
+                            [-this.halfLength, -this.halfLengthDrawing,  this.halfLengthDrawing]])
         }
         if(this.posInSpace[0] == dim-1) {
             this.quads.push(["red",
-                            [ this.r, -this.rr, -this.rr],
-                            [ this.r,  this.rr, -this.rr],
-                            [ this.r,  this.rr,  this.rr],
-                            [ this.r, -this.rr,  this.rr]])
+                            [ this.halfLength, -this.halfLengthDrawing, -this.halfLengthDrawing],
+                            [ this.halfLength,  this.halfLengthDrawing, -this.halfLengthDrawing],
+                            [ this.halfLength,  this.halfLengthDrawing,  this.halfLengthDrawing],
+                            [ this.halfLength, -this.halfLengthDrawing,  this.halfLengthDrawing]])
         }
         if(this.posInSpace[2] == 0) {
             this.quads.push(["blue",
-                            [-this.rr, -this.rr, -this.r],
-                            [ this.rr, -this.rr, -this.r],
-                            [ this.rr,  this.rr, -this.r],
-                            [-this.rr,  this.rr, -this.r]])
+                            [-this.halfLengthDrawing, -this.halfLengthDrawing, -this.halfLength],
+                            [ this.halfLengthDrawing, -this.halfLengthDrawing, -this.halfLength],
+                            [ this.halfLengthDrawing,  this.halfLengthDrawing, -this.halfLength],
+                            [-this.halfLengthDrawing,  this.halfLengthDrawing, -this.halfLength]])
         }
         if(this.posInSpace[2] == dim-1) {
             this.quads.push(["green",
-                            [-this.rr, -this.rr,  this.r],
-                            [ this.rr, -this.rr,  this.r],
-                            [ this.rr,  this.rr,  this.r],
-                            [-this.rr,  this.rr,  this.r]])
+                            [-this.halfLengthDrawing, -this.halfLengthDrawing,  this.halfLength],
+                            [ this.halfLengthDrawing, -this.halfLengthDrawing,  this.halfLength],
+                            [ this.halfLengthDrawing,  this.halfLengthDrawing,  this.halfLength],
+                            [-this.halfLengthDrawing,  this.halfLengthDrawing,  this.halfLength]])
         }
         if(this.posInSpace[1] == 0) {
             this.quads.push(["white",
-                            [-this.rr, -this.r, -this.rr],
-                            [ this.rr, -this.r, -this.rr],
-                            [ this.rr, -this.r,  this.rr],
-                            [-this.rr, -this.r,  this.rr]])
+                            [-this.halfLengthDrawing, -this.halfLength, -this.halfLengthDrawing],
+                            [ this.halfLengthDrawing, -this.halfLength, -this.halfLengthDrawing],
+                            [ this.halfLengthDrawing, -this.halfLength,  this.halfLengthDrawing],
+                            [-this.halfLengthDrawing, -this.halfLength,  this.halfLengthDrawing]])
         }
         if(this.posInSpace[1] == dim-1) {
             this.quads.push(["yellow",
-                            [-this.rr,  this.r, -this.rr],
-                            [ this.rr,  this.r, -this.rr],
-                            [ this.rr,  this.r,  this.rr],
-                            [-this.rr,  this.r,  this.rr]])
+                            [-this.halfLengthDrawing,  this.halfLength, -this.halfLengthDrawing],
+                            [ this.halfLengthDrawing,  this.halfLength, -this.halfLengthDrawing],
+                            [ this.halfLengthDrawing,  this.halfLength,  this.halfLengthDrawing],
+                            [-this.halfLengthDrawing,  this.halfLength,  this.halfLengthDrawing]])
         }
     }
 
