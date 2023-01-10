@@ -1,38 +1,23 @@
 
-canvasWidth = 200
+canvasWidth = 200 //useless but why not
 canvasHeight = 200
-dim = 3;
-cube = []
-cubieSideLength = (canvasWidth/0.7) / dim;
-
+dim = 3; //do not modify that, I'm only interested in 3x3x3 cube so it's not made to accept different sizes, sorry
+sideLength = 1.3 * Math.min(canvasWidth, canvasHeight) / dim //tentative to fit the cube in the canvas, the 1.3 is just helping to do that, mostly due to easyCam dezooming by default.
+let cube = 0
 
 function setup() {
-    let h = new p5.Matrix()
-    print(h)
     smooth()
     createCanvas(canvasWidth, canvasHeight, WEBGL);
     createEasyCam();
     document.oncontextmenu = ()=>false;
-
-
-    for         (i = 0; i < dim; i++) {
-        for     (j = 0; j < dim; j++) {
-            for (k = 0; k < dim; k++) {
-                if(i == 0 || j == 0 || k == 0 || i == dim-1 || j == dim-1 || k == dim-1) {
-                    offset = (dim - 1) * cubieSideLength / 2
-                    x = cubieSideLength * i - offset;
-                    y = cubieSideLength * j - offset;
-                    z = cubieSideLength * k - offset
-                    cube.push(new Cubie(i, j, k, x, y, z, cubieSideLength))
-                }
-            }
-        }
-    }
+    cube = new Cube()
+    cube.createCubies()
+    cube.cubieList[0].h = 1
 }
+
   
   function draw() {
     background(200)
-    for (i = 0; i < cube.length; i++) {
-        cube[i].show()
-    }
+    cube.show()
+    box(20)
 }
