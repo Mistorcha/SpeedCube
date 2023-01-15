@@ -1,6 +1,8 @@
 class Cubie{
     constructor(x, y ,z) {
-        this.h = 0
+        this.x = x;
+        this.y = y;
+        this.z = z;
         this.matrix = new p5.Matrix();
         this.matrix.translate([x*sideLength, y*sideLength, z*sideLength]);
     }
