@@ -12,29 +12,37 @@ function setup() {
     document.oncontextmenu = ()=>false;
     cube = new Cube()
     cube.createCubies()
-    cube.cubieList[0].h = 1
-    cube.cubieList[1].h = 2
-    cube.cubieList[2].h = 3
-    cube.cubieList[3].h = 4
-    cube.cubieList[5].h = 5
-    cube.cubieList[6].h = 6
-    cube.cubieList[7].h = 7
-    cube.cubieList[8].h = 8
-    
+    cube.cubieList[0].h = 1  
 }
 
   
   function draw() {
     background(200)
     cube.show()
-    box(20)
+
 }
 
 function keyPressed () {
+  if (key === ' ') {
+    cube.processAlg("F R U' R' U' R U R' F' R U R' U' R' F R F'")
+  }
   if (key === "r") {
-    cube.turn("X", -1, HALF_PI)
+    cube.turn("X", 1, HALF_PI)
+  }
+  if (key === "t") {
+    cube.turn("Y", -1, -HALF_PI)
+  }
+  if (key === "y") {
+    cube.turn("Z", 1, HALF_PI)
   }
   if (key === "f") {
+    cube.turn("X", 1, -HALF_PI)
+  }
+  if (key === "g") {
     cube.turn("Y", -1, HALF_PI)
   }
+  if (key === "h") {
+    cube.turn("Z", 1, -HALF_PI)
+  }
+  
 }

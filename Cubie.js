@@ -10,14 +10,7 @@ class Cubie{
     
     show() {
         fill(255)
-        if(this.h == 1){fill('red')}
-        if(this.h == 2){fill('orange')}
-        if(this.h == 3){fill('blue')}
-        if(this.h == 4){fill('green')}
-        if(this.h == 5){fill('yellow')}
-        if(this.h == 6){fill('grey')}
-        if(this.h == 7){fill('black')}
-        if(this.h == 8){fill('cyan')}
+        if(this.h == 1){fill(255, 0, 0)}
         
         stroke(0)
         strokeWeight(5)
@@ -28,9 +21,10 @@ class Cubie{
     }
 
     applyMatrixTranslation() {
+        resetMatrix()
         let z = this.matrix.mat4
-        z[12] = z[0]*this.x+z[4]*this.y+z[8]*this.z
-        z[13] = z[1]*this.x+z[5]*this.y+z[9]*this.z
-        z[14] = z[2]*this.x+z[6]*this.y+z[10]*this.z
+        z[12] = round(z[0])*this.x+round(z[4])*this.y+round(z[8])*this.z
+        z[13] = round(z[1])*this.x+round(z[5])*this.y+round(z[9])*this.z
+        z[14] = round(z[2])*this.x+round(z[6])*this.y+round(z[10])*this.z
     }
 }
