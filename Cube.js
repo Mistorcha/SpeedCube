@@ -22,18 +22,26 @@ class Cube {
         }
     }
 
-    turnX(position, angle) { //issue with rotation matrix ,to fix
+    turn(xyz, position, angle) { //issue with rotation matrix ,to fix
+        print(xyz)
         for(let i = 0; i < this.cubieList.length; i++) {
-                this.cubieList[i].matrix.rotateX(HALF_PI)
-                let z = this.cubieList[i].matrix.mat4
-                let a = z[5]
-                let b = z[6]
-                if (round(a) == 0) {a = z[9]}
-                if (round(b) == 0) {b = z[10]}
-                z[13]*=a
-                z[14]*=b
+                if (xyz == "X") {
+                    if(this.cubieList[i].matrix.mat4[12] == position*sideLength) {
+                        this.cubieList[i].matrix.rotateX(angle)
+                        this.cubieList[i].applyMatrixTranslation()
+                    }
+                } else if (xyz == "Y") {
+                    if(this.cubieList[i].matrix.mat4[13] == position*sideLength) {
+                        this.cubieList[i].matrix.rotateY(angle)
+                        this.cubieList[i].applyMatrixTranslation()
+                    }
+                } else if (xyz == "Z") {
+                    if(this.cubieList[i].matrix.mat4[14] == position*sideLength) {
+                        this.cubieList[i].matrix.rotateZ(angle)
+                        this.cubieList[i].applyMatrixTranslation()
+                    }
+                }
         }
-        print(this.cubieList[0].matrix.mat4)
-
+        
     }
 }

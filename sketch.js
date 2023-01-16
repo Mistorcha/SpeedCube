@@ -13,6 +13,14 @@ function setup() {
     cube = new Cube()
     cube.createCubies()
     cube.cubieList[0].h = 1
+    cube.cubieList[1].h = 2
+    cube.cubieList[2].h = 3
+    cube.cubieList[3].h = 4
+    cube.cubieList[5].h = 5
+    cube.cubieList[6].h = 6
+    cube.cubieList[7].h = 7
+    cube.cubieList[8].h = 8
+    
 }
 
   
@@ -24,6 +32,9 @@ function setup() {
 
 function keyPressed () {
   if (key === "r") {
-    cube.turnX(-1, HALF_PI)
+    cube.turn("X", -1, HALF_PI)
+  }
+  if (key === "f") {
+    cube.turn("Y", -1, HALF_PI)
   }
 }
