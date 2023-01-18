@@ -25,6 +25,7 @@ function setup() {
 function keyPressed () {
   if (key === ' ') {
     cube.processAlg("F R U' R' U' R U R' F' R U R' U' R' F R F'")
+    //cube.processAlg("U")
   }
   if (key === "r") {
     cube.turn("X", 1, HALF_PI)

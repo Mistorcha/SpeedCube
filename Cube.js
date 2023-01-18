@@ -45,6 +45,98 @@ class Cube {
     }
 
     processAlg(algo) {
+        let alg = algo.split(" ");
+        for(let i = 0; i < alg.length; i++) {
+            switch(alg[i]) {
+                //Z turns
+                case "F":
+                    this.turn("Z", 1, HALF_PI);
+                    break;
+                case "F'":
+                    this.turn("Z", 1, -HALF_PI);
+                    break;
+                case "S":
+                    this.turn("Z", 0, HALF_PI);
+                    break;
+                case "S'":
+                    this.turn("Z", 0, -HALF_PI);
+                    break;
+                case "B'":
+                    this.turn("Z", -1, HALF_PI);
+                    break;
+                case "B":
+                    this.turn("Z", -1, -HALF_PI);
+                    break;
+                case "F2":
+                    this.turn("Z", 1, PI);
+                    break;
+                case "S2":
+                    this.turn("Z", 0, PI);
+                    break;
+                case "B2":
+                    this.turn("Z", -1, PI);
+                    break;
+
+
+                //Y turns
+                case "U":
+                    this.turn("Y", -1, -HALF_PI);
+                    break;
+                case "U'":
+                    this.turn("Y", -1, HALF_PI);
+                    break;
+                case "E":
+                    this.turn("Y", 0, HALF_PI);
+                    break;
+                case "E'":
+                    this.turn("Y", 0, -HALF_PI);
+                    break;
+                case "D":
+                    this.turn("Y", 1, HALF_PI);
+                    break;
+                case "D'":
+                    this.turn("Y", 1, -HALF_PI);
+                    break;
+                case "U2":
+                    this.turn("Y", -1, PI);
+                    break;
+                case "E2":
+                    this.turn("Y", 0, PI);
+                    break;
+                case "D2":
+                    this.turn("Y", 1, PI);
+                    break;
+
+                //X turns
+                case "R":
+                    this.turn("X", 1, HALF_PI);
+                    break;
+                case "R'":
+                    this.turn("X", 1, -HALF_PI);
+                    break;
+                case "M":
+                    this.turn("X", 0, -HALF_PI);
+                    break;
+                case "M'":
+                    this.turn("X", 0, HALF_PI);
+                    break;
+                case "L":
+                    this.turn("X", -1, -HALF_PI);
+                    break;
+                case "L'":
+                    this.turn("X", -1, HALF_PI);
+                    break;
+                case "R2":
+                    this.turn("X", 1, PI);
+                    break;
+                case "M2":
+                    this.turn("X", 0, PI);
+                    break;
+                case "L2":
+                    this.turn("X", -1, PI);
+                    break;
+            }
+        }
         
     }
 }
