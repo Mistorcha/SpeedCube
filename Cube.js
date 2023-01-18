@@ -5,7 +5,7 @@ class Cube {
 
 
     createCubies() {
-        /*for         (let x = -1; x < 2; x++) {
+        for         (let x = -1; x < 2; x++) {
             for     (let y = -1; y < 2; y++) {
                 for (let z = -1; z < 2; z++) {
                     if(x == -1 || y == -1 || z == -1 || x == 1 || y == 1 || z == 1) {
@@ -13,8 +13,7 @@ class Cube {
                     }
                 }
             }
-        }*/
-        this.cubieList.push(new Cubie(-1, -1, -1))
+        }
     }
 
     show() {
@@ -43,6 +42,9 @@ class Cube {
                 }
             
         }
-        print(this.cubieList[0].matrix.mat4)
+    }
+
+    processAlg(algo) {
+        
     }
 }

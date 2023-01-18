@@ -5,13 +5,12 @@ class Cubie{
         this.y = y*sideLength;
         this.z = z*sideLength;
         this.matrix = new p5.Matrix();
-        this.matrix.translate([x*sideLength, y*sideLength, z*sideLength]);
+        this.matrix.translate([this.x, this.y, this.z]); 
     }
     
     show() {
         fill(255)
-        if(this.h == 1){fill(255, 0, 0)}
-        
+        if(this.h) {fill(255, 0, 0)}
         stroke(0)
         strokeWeight(5)
         push()
@@ -21,10 +20,13 @@ class Cubie{
     }
 
     applyMatrixTranslation() {
-        resetMatrix()
-        let z = this.matrix.mat4
-        z[12] = round(z[0])*this.x+round(z[4])*this.y+round(z[8])*this.z
-        z[13] = round(z[1])*this.x+round(z[5])*this.y+round(z[9])*this.z
-        z[14] = round(z[2])*this.x+round(z[6])*this.y+round(z[10])*this.z
+        let a = this.matrix.mat4
+        this.x = round(a[0])*a[12]+round(a[4])*a[13]+round(a[8])*a[14]
+        this.y = round(a[1])*a[12]+round(a[5])*a[13]+round(a[9])*a[14]
+        this.z = round(a[2])*a[12]+round(a[6])*a[13]+round(a[10])*a[14]
+        this.matrix = new p5.Matrix();
+        this.matrix.mat4[12] = this.x;
+        this.matrix.mat4[13] = this.y;
+        this.matrix.mat4[14] = this.z;
     }
 }
