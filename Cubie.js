@@ -4,18 +4,31 @@ class Cubie{
         this.x = x*sideLength;
         this.y = y*sideLength;
         this.z = z*sideLength;
+        this.faces = [];
         this.matrix = new p5.Matrix();
-        this.matrix.translate([this.x, this.y, this.z]); 
+        this.matrix.translate([this.x, this.y, this.z]);
+        this.facesCreation(x, y, z);
+    }
+
+    facesCreation(x, y ,z){
+        if (x == -1) {this.faces.push(new Face([255, 165,   0],  x,  0,  0))}
+        if (x ==  1) {this.faces.push(new Face([255,   0,   0],  x,  0,  0))}
+        if (y == -1) {this.faces.push(new Face([255, 255, 255],  0,  y,  0))}
+        if (y ==  1) {this.faces.push(new Face([255, 255,   0],  0,  y,  0))}
+        if (z == -1) {this.faces.push(new Face([  0,   0, 255],  0,  0,  z))}
+        if (z ==  1) {this.faces.push(new Face([  0, 255,   0],  0,  0,  z))}
     }
     
     show() {
         fill(255)
-        if(this.h) {fill(255, 0, 0)}
         stroke(0)
         strokeWeight(5)
         push()
         applyMatrix(this.matrix.mat4)
-            box(sideLength)
+        for(let i = 0; i < this.faces.length; i++) {
+            this.faces[i].show()
+        }
+        box(10)
         pop()
     }
 

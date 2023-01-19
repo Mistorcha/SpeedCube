@@ -12,7 +12,8 @@ function setup() {
     document.oncontextmenu = ()=>false;
     cube = new Cube()
     cube.createCubies()
-    cube.cubieList[0].h = 1  
+    cube.cubieList[0].h = 1
+    //cube.cubieList[1].h = 2  
 }
 
   
