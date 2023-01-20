@@ -5,16 +5,13 @@ class Cube {
 
 
     createCubies() {
-        /*for         (let x = -1; x < 2; x++) {
+        for         (let x = -1; x < 2; x++) {
             for     (let y = -1; y < 2; y++) {
                 for (let z = -1; z < 2; z++) {
-                    if(x == -1 || y == -1 || z == -1 || x == 1 || y == 1 || z == 1) {
-                        this.cubieList.push(new Cubie(x, y, z))
-                    }
+                    this.cubieList.push(new Cubie(x, y, z));
                 }
             }
-        }*/
-        this.cubieList.push(new Cubie(-1, -1,-1))
+        }
     }
 
     show() {
@@ -29,16 +26,19 @@ class Cube {
                     if(this.cubieList[i].matrix.mat4[12] == position*sideLength) {
                         this.cubieList[i].matrix.rotateX(angle)
                         this.cubieList[i].applyMatrixTranslation()
+                        this.cubieList[i].turnFaces(xyz, angle)
                     }
                 } else if (xyz == "Y") {
                     if(this.cubieList[i].matrix.mat4[13] == position*sideLength) {
                         this.cubieList[i].matrix.rotateY(angle)
                         this.cubieList[i].applyMatrixTranslation()
+                        this.cubieList[i].turnFaces(xyz, angle)
                     }
                 } else if (xyz == "Z") {
                     if(this.cubieList[i].matrix.mat4[14] == position*sideLength) {
                         this.cubieList[i].matrix.rotateZ(angle)
                         this.cubieList[i].applyMatrixTranslation()
+                        this.cubieList[i].turnFaces(xyz, angle)
                     }
                 }
             

@@ -11,16 +11,22 @@ class Cubie{
     }
 
     facesCreation(x, y ,z){
-        if (x == -1) {this.faces.push(new Face([255, 165,   0],  x,  0,  0))}
-        if (x ==  1) {this.faces.push(new Face([255,   0,   0],  x,  0,  0))}
-        if (y == -1) {this.faces.push(new Face([255, 255, 255],  0,  y,  0))}
-        if (y ==  1) {this.faces.push(new Face([255, 255,   0],  0,  y,  0))}
-        if (z == -1) {this.faces.push(new Face([  0,   0, 255],  0,  0,  z))}
-        if (z ==  1) {this.faces.push(new Face([  0, 255,   0],  0,  0,  z))}
+        if (x == -1) {this.faces.push(new Face(color(255, 165,   0),  x,  0,  0))}
+        if (x ==  1) {this.faces.push(new Face(color(255,   0,   0),  x,  0,  0))}
+        if (y == -1) {this.faces.push(new Face(color(255, 255, 255),  0,  y,  0))}
+        if (y ==  1) {this.faces.push(new Face(color(255, 255,   0),  0,  y,  0))}
+        if (z == -1) {this.faces.push(new Face(color(  0,   0, 255),  0,  0,  z))}
+        if (z ==  1) {this.faces.push(new Face(color(  0, 255,   0),  0,  0,  z))}
     }
     
+    turnFaces(xyz, angle) {
+        for (let i = 0; i<this.faces.length; i++) {
+            this.faces[i].turnFace(xyz, angle)
+        }
+    }
+
     show() {
-        fill(255)
+        noFill()
         stroke(0)
         strokeWeight(5)
         push()
@@ -28,7 +34,6 @@ class Cubie{
         for(let i = 0; i < this.faces.length; i++) {
             this.faces[i].show()
         }
-        box(10)
         pop()
     }
 

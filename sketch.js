@@ -25,26 +25,6 @@ function setup() {
 
 function keyPressed () {
   if (key === ' ') {
-    cube.processAlg("F R U' R' U' R U R' F' R U R' U' R' F R F'")
-    //cube.processAlg("U")
+    cube.processAlg(" ")
   }
-  if (key === "r") {
-    cube.turn("X", 1, HALF_PI)
-  }
-  if (key === "t") {
-    cube.turn("Y", -1, -HALF_PI)
-  }
-  if (key === "y") {
-    cube.turn("Z", 1, HALF_PI)
-  }
-  if (key === "f") {
-    cube.turn("X", 1, -HALF_PI)
-  }
-  if (key === "g") {
-    cube.turn("Y", -1, HALF_PI)
-  }
-  if (key === "h") {
-    cube.turn("Z", 1, -HALF_PI)
-  }
-  
 }
