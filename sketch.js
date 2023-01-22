@@ -1,8 +1,8 @@
 
 canvasWidth = 200 //useless but why not
-canvasHeight = 200
+canvasHeight = canvasWidth
 dim = 3; //do not modify that, I'm only interested in 3x3x3 cube so it's not made to accept different sizes, sorry
-sideLength = 100 //tentative to fit the cube in the canvas, the 1.3 is just helping to do that, mostly due to easyCam dezooming by default.
+sideLength = canvasWidth / 2 //tentative to fit the cube in the canvas, the 1.3 is just helping to do that, mostly due to easyCam dezooming by default.
 let cube = 0
 
 function setup() {

@@ -4,7 +4,7 @@ class Face {
         this.color = color
     }
 
-    turnFace(xyz, angle) {
+    turnFace(xyz, angle) { //rotate the face with the same angle than for the cubie
         let v2 = createVector(0, 0, 0)
         if(xyz == "X") {
             v2.y = round(this.v.y * cos(angle) - this.v.z * sin(angle));
@@ -29,23 +29,14 @@ class Face {
         push()
         fill(this.color)
         noStroke()
-        if(this.v.x) {applyMatrix(0, 0, -this.v.x, 0,
-                                  0, 1, 0, 0, 
-                                  this.v.x, 0, 0, 0, 
-                                  this.v.x*50, 0, 0, 1)}
-        //if(this.v.x == 1) {applyMatrix(0,0,-1,0,0,1,0,0,1,0,0,0,50,0,0,1)}
-        //if(this.v.x == -1){applyMatrix(0,0,1,0,0,-1,0,0,1,0,0,0,-50,0,0,1)}
-        if(this.v.y == 1) {applyMatrix(1,0,0,0,0,0,1,0,0,-1,0,0,0,50,0,1)}
-        if(this.v.y == -1){applyMatrix(1,0,0,0,0,0,-1,0,0,1,0,0,0,-50,0,1)}
-        if(this.v.z == 1){applyMatrix(1,0,0,0,0,1,0,0,0,0,1,0,0,0,50,1)}
-        if(this.v.z == -1){applyMatrix(1,0,0,0,0,1,0,0,0,0,1,0,0,0,-50,1)}
-
-        //
-        //applyMatrix(this.v[0]*this.v[0], this.v[0]*this.v[1]*1+this.v[2]*1, this.v[0]*this.v[2] - this.v[1], 0,
-        //    this.v[0]*this.v[1] - this.v[2], this.v[1]*this.v[1], this.v[1]*this.v[2] + this.v[0], 0,
-        //    this.v[0]*this.v[2] + this.v[1], this.v[1] * this.v[2] - this.v[0], this.v[2]*this.v[2], 0,
-        //    0, 0, 0, 1)
-        plane(98, 98)
+        let dist = sideLength / 2
+        //by default the faces are facing z axis, for turning in x direction a rotation along y is needed
+        //for turning in y direction a rotation along x is needed (see rotation matrices in wikipedia)
+        if(this.v.x) {applyMatrix(0, 0, -this.v.x, 0, 0, 1, 0, 0, this.v.x, 0, 0, 0, this.v.x*dist, 0, 0, 1)}
+        if(this.v.y) {applyMatrix(1, 0, 0, 0, 0, 0, this.v.y, 0, 0, -this.v.y, 0, 0, 0, this.v.y*dist, 0, 1)}
+        if(this.v.z) {applyMatrix(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, this.v.z*dist, 1)}
+        //faces are drawn just slightly smaller than the size of the sidelenght. Need to replace it if sideLength changes
+        plane(sideLength * 0.96, sideLength * 0.96)
         pop()
     }
 }

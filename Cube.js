@@ -20,7 +20,7 @@ class Cube {
         }
     }
 
-    turn(xyz, position, angle) { //issue with rotation matrix ,to fix
+    turn(xyz, position, angle) {
         for(let i = 0; i < this.cubieList.length; i++) {
                 if (xyz == "X") {
                     if(this.cubieList[i].matrix.mat4[12] == position*sideLength) {
