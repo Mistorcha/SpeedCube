@@ -1,6 +1,7 @@
 class Cube {
     constructor() {
         this.cubieList = []
+        this.allMoves = []
     }
 
 
@@ -44,6 +45,41 @@ class Cube {
             
         }
     }
+
+    scramble(nb = 20) {
+        let list = ["R", "L", "R'", "L'", "D", "D'", "U", "U'", "B", "B'", "F", "F'", "R2", "L2", "F2", "B2", "D2", "U2"]
+        let inc = 0;
+        let scramble = []
+        while (inc < nb) {
+            let randMove = random(list)
+            scramble.push(randMove)
+            inc++
+            this.allMoves.push(randMove)
+        }
+        print(scramble.join(" "))
+        this.processAlg(scramble.join(" "))
+    }
+
+    reset() {
+        print("allMoves")
+        print(this.allMoves)
+        let reverse = this.allMoves.reverse()
+        let reversedAlg = []
+        for(let i = 0; i< reverse.length; i++) {
+            if (reverse[i].slice(1) == "2") {
+                reversedAlg.push(reverse[i])
+            }
+            else if (reverse[i].slice(-1) == "'") {
+                reversedAlg.push(reverse[i].slice(0, reverse[i].length-1))
+            } else {
+                reversedAlg.push(reverse[i]+"'")
+            }
+        }
+        print(reversedAlg)
+        this.processAlg(reversedAlg.join(" "))
+        this.allMoves = []
+    }
+
 
     processAlg(algo) {
         let alg = algo.split(" ");
